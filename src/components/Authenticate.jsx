@@ -1,3 +1,9 @@
 export default function Authenticate() {
-  return <h2>Authenticate!</h2>;
+  //   const { token, setToken } = props;
+  return (
+    <>
+      <h2>Authenticate!</h2>
+      {/* <button onClick={handleClick}>Authenticate Token</button> */}
+    </>
+  );
 }
