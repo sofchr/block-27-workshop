@@ -5,6 +5,8 @@ export default function SignUpForm(props) {
   const { token, setToken } = props;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  //new state for when someone inputs their username
+  const [newUsername, setNewUsername] = useState(null);
   const [error, setError] = useState(null);
 
   async function handleSubmit(event) {
@@ -19,14 +21,21 @@ export default function SignUpForm(props) {
       );
       const result = await response.json();
       setToken(result.token);
-      console.log(token);
-      console.log(result);
+      //attempt at displaying username
+      if (result.success) {
+        setNewUsername(username);
+      }
+      console.log(newUsername);
+      console.log("token", token);
+      console.log("result", result);
     } catch (error) {
       setError(error.message);
     }
   }
   return (
     <>
+      {/* display new username below*/}
+      {newUsername && <p>Welcome, {newUsername}!</p>}
       <h2>Sign Up!</h2>
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
